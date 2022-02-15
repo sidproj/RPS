@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+    width:100vw;
+    height:1--vh;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background-image: radial-gradient(circle at center, #1E3555,#161F40);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    margin:0;
+    padding:0;
+    margin-top:1em;
+    /* font-family: 'ABeeZee', sans-serif; */
+    font-family: 'Inter', sans-serif;
+}
+
+
+a,li,ul,link{
+    text-decoration: none;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4em;
+    align-items: center;
+    height:100%;
+    width:100%;
+}
+
+.titleContainer{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20em;
+    border:solid 2px #acacac93;
+    border-radius: 10px;
+    padding:1em 1.2em;
+}
+
+.gameName{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.gameNameText{
+    color:#FCFFFD;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.scoreSection{
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.3em;
+    padding:1em;
+    border-radius:10px;
+}
+.scoreTitle{
+    font-size: 0.6em;
+    color:#1E3555;
+}
+.score{
+    font-size: 2em;
+    font-weight: 700;
+    color:#343434;
+}
+
+.gameArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3em;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    column-gap: 7em;
+}
+
+.option{
+    width:8em;
+    height:8em;
+    background-color: #F5F5F5;
+    border-radius: 10em;
+    border:solid 1.3em #343434;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stone{
+    border-color: #D63552;
+    box-shadow: 5px 5px 2px #6c1223;
+}
+
+.paper{
+    border-color: #4B68F1;
+    box-shadow: 5px 5px 2px #192878;
+}
+
+.scissor{
+    border-color: #E8A015;
+    box-shadow: 5px 5px 2px #7e580a;
+}
+
+.option:hover{
+    transform: scale(0.98);
+}
+
+.option img{
+    width:5em;
+    object-fit: contain;
+}
+
+.picked{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    align-items: center;;
+}
+
+.pickedText{
+    font-size: 1.2em;
+    font-weight: 600;
+    color:#F5F5F5;
+}
+
+.res{
+    align-items: center;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.again{
+    background-color: #F9F9F9;
+    padding:0.2em;
+    width:10em;
+    text-align: center;
+    border-radius:5px;
+}
+.textResult{
+    font-size: 2.5em;
+    font-weight: 700;
+    color:#F9F9F9;
+}
+
+.again:hover{
+    color:#4B68F1;
+}
+
+.extra{
+    position:fixed;
+    bottom:1em;
+    right:1em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.rules{
+    text-align: center;
+    padding:0.2em 1.5em;
+    border:solid 1px #F5F5F5;
+    border-radius: 5px;
+    color:#F5F5F5;
+}
+
+.rules:hover{
+    background-color: #F5F5F5;
+    color:#343434;
+}
+
+.dimScreen{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:#3B4161;
+}
+
+.rulesDetails{
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    padding:3em;
+    border-radius: 1em;
+    row-gap: 2em;
+}
+
+.colse1{
+    display: none;
+}
+
+.rulesTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleText{
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.rulesOption{
+    width:6em;
+    height:6em;
+    background-color: #E0E4ED;
+    border-radius: 10em;
+    border:solid 1em #C9CBD8;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rulesOption img{
+    width:3em;
+    object-fit: contain;
+}
+
+.row1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 2em;
+}
+
+.row2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10em;
+}
+
+.rowArrow{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.colArrow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrow{
+    width:3em;
+    object-fit: contain;
+}
+
+.arrow1{
+    width:4em;
+    object-fit: contain;
+}
+
+.rulesDiagram{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+}
+
+.close{
+    width:2em;
+    object-fit: contain;
+}
+
+.arrowText{
+    color:#C9CBD8;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    html,body{
+        padding:0.5em 5em 1em 5em;
+        width:100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main{
+        width:130vw;
+        height:unset;
+        align-items: center;
+    }
+    .titleContainer{
+        margin:0;
+        width:95%;
+        align-items:stretch;
+        column-gap: 12em;
+    }
+
+    
+    .extra{
+        flex-direction: row;
+        column-gap: 1.5em;
+        bottom:1em;
+        left:1em;
+        right:unset;
+        align-items: center;
+    }
+
+    .rules{
+        font-size: 1em;
+    }
+
+    .option{
+        width:7em;
+        height:7em;
+    }
+
+    .row{
+        column-gap:4em ;
+    }
+
+    .result{
+        display: none;
+    }
+
+
+    .resultM{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pickedText{
+        font-size: 1em;
+    }
+
+    .textResult{
+        font-size: 3em;
+    }
+
+    .again{
+        font-size: 1.3em;
+        padding:0.5em 2.5em;
+    }
+
+    .rulesDetails{
+        position:fixed;
+        top:0px;
+        left:0px;
+        width:80%;
+        height:90%;
+        border-radius: 0;
+        align-items: center;
+        row-gap: 7em;
+    }
+
+    .rulesDiagram{
+        row-gap: 3em;
+    }
+
+    .close{
+        display: none;
+    }
+
+    .close1{
+        display: flex;
+        width:1.8em;
+    }
+    
+}

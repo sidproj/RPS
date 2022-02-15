@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stone Paper Scissor</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  
+<div class="main">
+
+  <div class="titleContainer">
+      <div class="gameName">
+          <div class="gameNameText">ROCK</div>
+          <div class="gameNameText">PAPER</div>
+          <div class="gameNameText">SCISSORS</div>
+      </div>
+      <div class="scoreSection">
+          <div class="scoreTitle">SCORE</div>
+          <div class="score">
+              <% if(score){ %>
+                  <%=score%>
+              <%}else{%>
+                  0
+              <%}%>
+          </div>
+      </div>
+  </div>
