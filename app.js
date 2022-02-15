@@ -43,9 +43,9 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/play/:hand",(req,res)=>{
-    const testHand=req.params.hand.toLocaleUpperCase;
+    const testHand=req.params.hand.toLocaleUpperCase();
     if(testHand == "ROCK" || testHand == "PAPER" || testHand == "SCISSOR"){
-        const hands=["STONE","PAPER","SCISSOR"];
+        const hands=["ROCK","PAPER","SCISSOR"];
         const house= hands[Math.floor(Math.random()*3)];
         const user = req.params.hand.toUpperCase();
 
@@ -73,19 +73,19 @@ app.get("/resetscore",(req,res)=>{
 
 const findResult=(user,house)=>{
     let state=0;
-    if( user=="STONE" && house=="SCISSOR" ){
+    if( user=="ROCK" && house=="SCISSOR" ){
         state=1;
     }
-    else if(user=="STONE" && house=="PAPER" ){
+    else if(user=="ROCK" && house=="PAPER" ){
         state=-1;
     }
     else if(user=="SCISSOR" && house=="PAPER"){
         state=1;
     }
-    else if(user=="SCISSOR" && house=="STONE"){
+    else if(user=="SCISSOR" && house=="ROCK"){
         state=-1;
     }
-    else if(user=="PAPER" && house=="STONE"){
+    else if(user=="PAPER" && house=="ROCK"){
         state=1;
     }
     else if(user=="PAPER" && house=="SCISSOR"){
