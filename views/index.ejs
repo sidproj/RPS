@@ -1,31 +1,65 @@
 <%- include('header') %>
 
-
-    <div class="gameArea">
+    <div class="gameArea" id="initial">
         <div class="row">
-            <a href="/play/rock">
-                <div class="option stone" onclick="play('stone')">
-                    <img src="/rock.png"/>
-                </div>
-            </a>
-            <a href="/play/paper">
-                <div class="option paper" onclick="play('paper')">
-                    <img src="/paper.png"/>
-                </div>
-            </a>
+            <div class="option stone" onclick="play('rock')">
+                <img src="/rock.png"/>
+            </div>
+            <div class="option paper" onclick="play('paper')">
+                <img src="/paper.png"/>
+            </div>
         </div>
         <div class="row">
-            <a href="/play/scissor">
-                <div class="option scissor" onclick="play('scissor')">
-                    <img src="/scissors.png"/>
+            <div class="option scissor" onclick="play('scissor')">
+                <img src="/scissors.png"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="gameArea" id="result">
+        <div class="row res">
+            
+            <div class="picked">
+                <div class="pickedText">YOU PICKED</div>
+
+                <div class="option stone" id="userHand">
+                    <img src="/rock.png"/>
                 </div>
-            </a>
+
+            </div>
+
+            <div class="result">
+                <div class="textResult" id="gameResult">
+                    YOU
+                </div>
+                <div class="again" onclick="showInitial()">PLAY AGAIN</div>
+            </div>
+
+            <div class="picked">
+                <div class="pickedText">THE HOUSE PICKED</div>
+
+                <div class="option stone" id="houseHand">
+                    <img src="/rock.png"/>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="resultM">
+            <div class="textResult">
+                YOU
+            </div>
+            <div class="again" onclick="showInitial()">PLAY AGAIN</div>
         </div>
     </div>
 
 </div>
 
 <script>
+
+    window.onload=()=>{
+        document.getElementById("result").style.display="none";
+    }
 
     const play = async (hand)=>{
         const url="/play";
@@ -34,7 +68,79 @@
             body:JSON.stringify({hand}),
             headers:{'Content-Type':"application/json"},
         };
-        await fetch(url,options);
+        const res = await fetch(url,options);
+        const data = await res.json();
+        
+        setUserHand(data['user']);
+        setHouseHand(data['house']);
+        setResult(data['state']);
+        setScore(data['score']);
+        hideInitial();
+    }
+
+    const hideInitial=()=>{
+        document.getElementById("initial").style.display="none";
+        document.getElementById("result").style.display="flex";
+    }
+    const showInitial=()=>{
+        document.getElementById("initial").style.display="flex";
+        document.getElementById("result").style.display="none";
+    }
+
+    const setUserHand = (user)=>{
+
+        const userHand = document.getElementById("userHand");
+
+        if(user == "ROCK"){
+            const replace = userHand.classList[1];
+            userHand.classList.replace(replace,"stone");
+            userHand.children[0].src="/rock.png";
+        }
+        else if(user == "PAPER"){
+            const replace = userHand.classList[1];
+            userHand.classList.replace(replace,"paper");
+            userHand.children[0].src="/paper.png";
+        }
+        else if(user == "SCISSOR"){
+            const replace = userHand.classList[1];
+            userHand.classList.replace(replace,"scissor");
+            userHand.children[0].src="/scissors.png";
+        }
+    }
+
+    const setHouseHand = (house) =>{
+        const houseHand = document.getElementById("houseHand");
+        if(house == "ROCK"){
+            const replace = houseHand.classList[1];
+            houseHand.classList.replace(replace,"stone");
+            houseHand.children[0].src="/rock.png";
+        }
+        else if(house == "PAPER"){
+            const replace = houseHand.classList[1];
+            houseHand.classList.replace(replace,"paper");
+            houseHand.children[0].src="/paper.png";
+        }
+        else if(house == "SCISSOR"){
+            const replace = houseHand.classList[1];
+            houseHand.classList.replace(replace,"scissor");
+            houseHand.children[0].src="/scissors.png";
+        }
+    }
+
+    const setResult = (result) => {
+        if(result == 1){
+            document.getElementById("gameResult").innerHTML="YOU WON";
+        }
+        else if(result == -1){
+            document.getElementById("gameResult").innerHTML="YOU LOSE";
+        }
+        else if(result == 0){
+            document.getElementById("gameResult").innerHTML="YOU TIED";
+        }
+    }
+
+    const setScore = (score) =>{
+        document.getElementById("score").innerText=score;
     }
 
 </script>

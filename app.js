@@ -42,12 +42,14 @@ app.get("/",(req,res)=>{
     }
 });
 
-app.get("/play/:hand",(req,res)=>{
-    const testHand=req.params.hand.toLocaleUpperCase();
-    if(testHand == "ROCK" || testHand == "PAPER" || testHand == "SCISSOR"){
+
+app.post("/play",(req,res)=>{
+    const testHand=req.body['hand'].toLocaleUpperCase();
+
+    if((testHand == "ROCK" || testHand == "PAPER" || testHand == "SCISSOR") && req.cookies['score']){
         const hands=["ROCK","PAPER","SCISSOR"];
         const house= hands[Math.floor(Math.random()*3)];
-        const user = req.params.hand.toUpperCase();
+        const user = req.body['hand'].toUpperCase();
 
         let score = decodeJWT(req.cookies['score']);
 
@@ -59,16 +61,13 @@ app.get("/play/:hand",(req,res)=>{
         //const scoreJWT = createJWT(score);
 
         res.cookie("score",createJWT(score));
-        res.render('result',{user,house,state,score:score});
-    }
-    else{
-        res.redirect("/");
+        res.send({user,house,state,score:score});
     }
 });
 
-app.get("/resetscore",(req,res)=>{
+app.post("/resetscore",(req,res)=>{
     res.cookie("score",createJWT(0));
-    res.redirect("/");
+    res.send({score:0});
 });
 
 const findResult=(user,house)=>{

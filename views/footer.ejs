@@ -1,16 +1,12 @@
 
 <div class="extra">
-    <a href="/"><div class="rules">
-        HOME
-    </div></a>
-
     <div class="rules" onclick="displayRules(true)">
         RULES
     </div>
 
-    <a href="/resetscore"><div class="rules">
+    <div class="rules" onclick="resetScore()">
         RESET SCORE
-    </div></a>
+    </div>
 </div>
 
 <div class="dimScreen" id="dimScreen">
@@ -75,6 +71,19 @@
             document.getElementById("dimScreen").style.display="none";
         }
     }
+
+    const resetScore = async () =>{
+        const url="/resetscore";
+        const options={
+            method:"POST",
+            body:JSON.stringify({}),
+            headers:{'Content-Type':"application/json"},
+        };
+        const res = await fetch(url,options);
+        const data = await res.json();
+        document.getElementById("score").innerText=data['score'];
+    }
+
 </script>
 
 </html>
