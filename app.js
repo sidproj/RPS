@@ -43,21 +43,27 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/play/:hand",(req,res)=>{
-    const hands=["STONE","PAPER","SCISSOR"];
-    const house= hands[Math.floor(Math.random()*3)];
-    const user = req.params.hand.toUpperCase();
+    const testHand=req.params.hand.toLocaleUpperCase;
+    if(testHand == "STONE" || testHand == "PAPER" || testHand == "SCISSOR"){
+        const hands=["STONE","PAPER","SCISSOR"];
+        const house= hands[Math.floor(Math.random()*3)];
+        const user = req.params.hand.toUpperCase();
 
-    let score = decodeJWT(req.cookies['score']);
+        let score = decodeJWT(req.cookies['score']);
 
-    const state=findResult(user,house);
-    if(state==1){
-        score++;
+        const state=findResult(user,house);
+        if(state==1){
+            score++;
+        }
+
+        //const scoreJWT = createJWT(score);
+
+        res.cookie("score",createJWT(score));
+        res.render('result',{user,house,state,score:score});
     }
-
-    //const scoreJWT = createJWT(score);
-
-    res.cookie("score",createJWT(score));
-    res.render('result',{user,house,state,score:score});
+    else{
+        res.redirect("/");
+    }
 });
 
 app.get("/resetscore",(req,res)=>{
