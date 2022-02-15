@@ -44,7 +44,7 @@ app.get("/",(req,res)=>{
 
 app.get("/play/:hand",(req,res)=>{
     const testHand=req.params.hand.toLocaleUpperCase;
-    if(testHand == "STONE" || testHand == "PAPER" || testHand == "SCISSOR"){
+    if(testHand == "ROCK" || testHand == "PAPER" || testHand == "SCISSOR"){
         const hands=["STONE","PAPER","SCISSOR"];
         const house= hands[Math.floor(Math.random()*3)];
         const user = req.params.hand.toUpperCase();
