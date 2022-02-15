@@ -293,10 +293,19 @@ a,li,ul,link{
     object-fit: contain;
 }
 
+.resultM{
+    display: none;
+}
+
+.close1{
+    display: none;
+}
+
 .arrowText{
     color:#C9CBD8;
     font-weight: 600;
 }
+
 
 @media only screen and (max-width: 600px) {
     
